@@ -11,16 +11,17 @@ spec:
 
   selector:
     matchLabels:
-      app: my-app
+      app: myapp
 
   template:
     metadata:
       labels:
-        app: my-app
+        app: myapp
 
     spec:
       containers:
         - name: myapp
           image: chandrakalaj/myapp:latest
+          imagePullPolicy: Always
           ports:
             - containerPort: 80
