@@ -20,7 +20,7 @@ spec:
 
     spec:
       containers:
-        - name: myapp
+        - name: myapp1
           image: chandrakalaj/myapp:latest
           imagePullPolicy: Always
           ports:
