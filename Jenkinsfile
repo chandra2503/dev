@@ -33,7 +33,7 @@ pipeline {
 
         stage('Push Docker Image') {
             steps {
-                sh 'docker push chandrakalaj/my-app:latest'
+                sh 'docker push chandrakalaj/myapp:latest'
             }
         }
 
