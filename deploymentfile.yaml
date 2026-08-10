@@ -20,7 +20,7 @@ spec:
 
     spec:
       containers:
-        - name: devops-app
-          image: nginx
+        - name: myapp
+          image: chandrakalaj/myapp:latest
           ports:
             - containerPort: 80
