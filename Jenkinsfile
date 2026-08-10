@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_IMAGE = "chandra2503/my-app"
+        DOCKER_IMAGE = "chandrakalaj/my-app"
     
     }
     stages {
@@ -24,7 +24,7 @@ pipeline {
                 withCredentials([
                     usernamePassword(
                         credentialsId: 'dockerhub',
-                        usernameVariable: 'chandra2503',
+                        usernameVariable: 'chandrakalaj',
                         passwordVariable: 'Nuthana@2024'
                     )
                 ]) {
