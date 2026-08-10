@@ -20,7 +20,7 @@ spec:
 
     spec:
       containers:
-        - name: myapp2
-          image: chandrakalaj/myapp2:latest
+        - name: myapp
+          image: chandrakalaj/myapp:latest
           ports:
             - containerPort: 80
