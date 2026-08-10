@@ -11,7 +11,7 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t chandrakalaj/myapp:latest .'
+                sh 'docker build -t chandrakalaj/myapp2:latest .'
             }
         }
 
@@ -33,7 +33,7 @@ pipeline {
 
         stage('Push Docker Image') {
             steps {
-                sh 'docker push chandrakalaj/myapp:latest'
+                sh 'docker push chandrakalaj/myapp2:latest'
             }
         }
 
