@@ -36,23 +36,16 @@ pipeline {
                 sh 'docker push chandra2503/myapp:latest'
             }
         }
-    }
-}
- stage("Push Docker Image") {
+
+        stage('Deploy Application') {
             steps {
-                sh "docker push ${DOCKER_IMAGE}"
+                sh 'microk8s kubectl apply -f deploymentfile.yaml'
             }
         }
 
-        stage("Deploy Application") {
+        stage('Deploy Service') {
             steps {
-                sh "microk8s kubectl apply -f deploymentfile.yaml"
-            }
-        }
-
-        stage("Deploy Service") {
-            steps {
-                sh "microk8s kubectl apply -f servicefile.yaml"
+                sh 'microk8s kubectl apply -f servicefile.yaml'
             }
         }
     }
