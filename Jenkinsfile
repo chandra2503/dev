@@ -3,9 +3,7 @@ pipeline {
 
     environment {
         DOCKER_IMAGE = "chandra2503/my-app"
-        DOCKER_PASSWORD = "Nuthana@2024"
-        DOCKER_USERNAME = "chandra2503"
-
+    
     }
     stages {
 
@@ -26,8 +24,8 @@ pipeline {
                 withCredentials([
                     usernamePassword(
                         credentialsId: 'dockerhub',
-                        usernameVariable: 'DOCKER_USERNAME',
-                        passwordVariable: 'DOCKER_PASSWORD'
+                        usernameVariable: 'chandra2503',
+                        passwordVariable: 'Nuthana@2024'
                     )
                 ]) {
                     sh 'echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin'
