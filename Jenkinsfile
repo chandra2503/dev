@@ -1,31 +1,46 @@
+```groovy
 pipeline {
     agent any
 
-    environment {
-        DOCKER_IMAGE = "chandrakalaj/my-app"
-    
-    }
     stages {
 
-        stage("Clone Repository") {
+        stage('Checkout') {
             steps {
                 git 'https://github.com/chandra2503/dev.git'
             }
         }
 
-        stage("Build Docker Image") {
+        stage('Build Docker Image') {
             steps {
-                sh "docker build -t ${DOCKER_IMAGE} ."
+                sh 'docker build -t chandra2503/myapp:latest .'
             }
         }
 
-        stage("Docker Login") {
-    steps {
-        withCredentials([usernamePassword(credentialsId: 'docker-hub',usernameVariable: 'DOCKER_USERNAME',passwordVariable: 'DOCKER_PASSWORD')]) {
-            sh "echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-           }
+        stage('Docker Login') {
+            steps {
+                withCredentials([
+                    usernamePassword(
+                        credentialsId: 'dockerhub',
+                        usernameVariable: 'DOCKER_USERNAME',
+                        passwordVariable: 'DOCKER_PASSWORD'
+                    )
+                ]) {
+                    sh '''
+                        echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+                    '''
+                }
+            }
+        }
+
+        stage('Push Docker Image') {
+            steps {
+                sh 'docker push chandra2503/myapp:latest'
+            }
         }
     }
+}
+```
+
         stage("Push Docker Image") {
             steps {
                 sh "docker push ${DOCKER_IMAGE}"
