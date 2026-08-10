@@ -8,7 +8,7 @@ spec:
   type: NodePort
 
   selector:
-    app: my-app
+    app: myapp
 
   ports:
     - protocol: TCP
